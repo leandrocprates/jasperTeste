@@ -4,6 +4,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="listaUsuarios" class="java.util.List"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
+	<parameter name="listaEmpresas" class="java.util.List"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -29,7 +30,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="140" splitType="Stretch">
+		<band height="326" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="80" height="30" uuid="3b57a301-c7dc-462f-8c6f-aaece8f4dc82"/>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
@@ -51,9 +52,14 @@
 				<textFieldExpression><![CDATA[$F{telefone}]]></textFieldExpression>
 			</textField>
 			<subreport>
-				<reportElement x="20" y="50" width="491" height="51" uuid="d5cc5eba-c8d4-4a4e-9f68-a95f4ae5cb6d"/>
+				<reportElement x="20" y="40" width="491" height="20" uuid="d5cc5eba-c8d4-4a4e-9f68-a95f4ae5cb6d"/>
 				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{listaUsuarios},false)]]></dataSourceExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} +"report_2.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="20" y="100" width="442" height="24" uuid="96f840c2-0477-4f76-a6d9-1d49e1b46018"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{listaEmpresas},false)]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "empresa.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>

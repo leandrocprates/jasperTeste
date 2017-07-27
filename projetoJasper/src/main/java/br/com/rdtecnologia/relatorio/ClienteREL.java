@@ -21,6 +21,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import br.com.rdtecnologia.model.Cliente;
 import br.com.rdtecnologia.model.Usuario;
+import br.com.rdtecnologia.model.Empresa;
 import java.util.HashMap;
  
 public class ClienteREL 
@@ -41,18 +42,18 @@ public class ClienteREL
 	
 	
 	//Imprime/gera uma lista de Clientes
-	public void imprimir(List<Cliente> clientes, List<Usuario> usuarios) throws Exception	
+	public void imprimir(List<Cliente> clientes, List<Usuario> usuarios, List<Empresa> empresas) throws Exception	
 	{
             
                 HashMap parametros = new HashMap();
-                parametros.put("listaUsuarios", usuarios);        
+                parametros.put("listaUsuarios", usuarios);   
+                parametros.put("listaEmpresas", empresas);  
                 parametros.put("SUBREPORT_DIR", "C:/Users/lprates/Desktop/jasperteste/projetoJasper/src/main/java/br/com/rdtecnologia/jasper/");        
                 
                 
             
 		JasperReport report = JasperCompileManager.compileReport(this.getPathToReportPackage() + "Clientes.jrxml");
 		
-		//JasperPrint print = JasperFillManager.fillReport(report, null, new JRBeanCollectionDataSource(clientes,false));
                 JasperPrint print = JasperFillManager.fillReport(report, parametros, new JRBeanCollectionDataSource(clientes,false));
                 
 		JasperExportManager.exportReportToPdfFile(print, "C:/Users/lprates/Desktop/jasperteste/Relatorio_de_Clientes.pdf");		

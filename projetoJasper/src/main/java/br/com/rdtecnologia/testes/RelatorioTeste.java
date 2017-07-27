@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
  
 import br.com.rdtecnologia.model.Cliente;
+import br.com.rdtecnologia.model.Empresa;
 import br.com.rdtecnologia.model.Usuario;
 import br.com.rdtecnologia.relatorio.ClienteREL;
  
@@ -24,6 +25,8 @@ public class RelatorioTeste
 		try{
 			List<Cliente> clientes = new ArrayList<Cliente>();
                         List<Usuario> usuarios = new ArrayList<Usuario>();
+                        List<Empresa> empresas = new ArrayList<Empresa>();
+                        
 			
 			Cliente Cliente1 = new Cliente();
 			Cliente1.setNome("RD Tecnologia");
@@ -64,8 +67,19 @@ public class RelatorioTeste
                         usuarios.add(usuario2);
                         
                         
+                        Empresa empresa = new Empresa ();
+                        empresa.setEmpresaId(300);
+                        empresa.setEmpresaNome("Empres 1 ");
+
+                        Empresa empresa2 = new Empresa ();
+                        empresa2.setEmpresaId(500);
+                        empresa2.setEmpresaNome("Empres 2 ");
+
+                        empresas.add(empresa);
+                        empresas.add(empresa2);
+                        
 			ClienteREL relatorio = new ClienteREL();
-			relatorio.imprimir(clientes, usuarios );
+			relatorio.imprimir(clientes, usuarios, empresas );
 		}
 		catch(Exception e){
 			System.out.println(e.getMessage());
