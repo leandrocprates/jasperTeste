@@ -26,18 +26,15 @@ import java.util.HashMap;
  
 public class ClienteREL 
 {
-	private String path; //Caminho base
-	
-	private String pathToReportPackage; // Caminho para o package onde estão armazenados os relatorios Jarper
+	private String path = "C:/Users/lprates/Documents/git/jasperTeste/"; //Caminho base
+        private String pathClassBase = "projetoJasper/src/main/java/br/com/rdtecnologia/jasper/";
+
+        private String pathToReportPackage; // Caminho para o package onde estão armazenados os relatorios Jarper
 	
 	//Recupera os caminhos para que a classe possa encontrar os relatórios
 	public ClienteREL() {
-		this.path = this.getClass().getClassLoader().getResource("").getPath();
-		this.pathToReportPackage = this.path + "br/com/rdtecnologia/jasper/";
-                
-                this.pathToReportPackage = "C:/Users/lprates/Desktop/jasperteste/projetoJasper2/src/main/java/br/com/rdtecnologia/jasper/" ; 
-                
-		System.out.println(path);
+		//this.path = this.getClass().getClassLoader().getResource("").getPath();
+                this.pathToReportPackage =  path + pathClassBase; 
 	}
 	
 	
@@ -48,7 +45,7 @@ public class ClienteREL
                 HashMap parametros = new HashMap();
                 parametros.put("listaUsuarios", usuarios);   
                 parametros.put("listaEmpresas", empresas);  
-                parametros.put("SUBREPORT_DIR", "C:/Users/lprates/Desktop/jasperteste/projetoJasper2/src/main/java/br/com/rdtecnologia/jasper/");        
+                parametros.put("SUBREPORT_DIR", this.getPathToReportPackage() );        
                 
                 
             
@@ -56,16 +53,14 @@ public class ClienteREL
 		
                 JasperPrint print = JasperFillManager.fillReport(report, parametros , new JRBeanCollectionDataSource(clientes,false) ) ;
                 
-		JasperExportManager.exportReportToPdfFile(print, "C:/Users/lprates/Desktop/jasperteste/Relatorio_de_Clientes.pdf");		
+		JasperExportManager.exportReportToPdfFile(print,  this.path + "Relatorio_de_Clientes.pdf" );		
 	}
  
 	public String getPathToReportPackage() {
 		return this.pathToReportPackage;
 	}
-	
-	public String getPath() {
-		return this.path;
-	}
+
+
 }
 
 
