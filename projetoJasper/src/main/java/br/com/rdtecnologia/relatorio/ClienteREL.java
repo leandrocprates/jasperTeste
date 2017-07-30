@@ -35,7 +35,7 @@ public class ClienteREL
 		this.path = this.getClass().getClassLoader().getResource("").getPath();
 		this.pathToReportPackage = this.path + "br/com/rdtecnologia/jasper/";
                 
-                this.pathToReportPackage = "C:/Users/lprates/Desktop/jasperteste/projetoJasper/src/main/java/br/com/rdtecnologia/jasper/" ; 
+                this.pathToReportPackage = "C:/Users/lprates/Desktop/jasperteste/projetoJasper2/src/main/java/br/com/rdtecnologia/jasper/" ; 
                 
 		System.out.println(path);
 	}
@@ -48,13 +48,13 @@ public class ClienteREL
                 HashMap parametros = new HashMap();
                 parametros.put("listaUsuarios", usuarios);   
                 parametros.put("listaEmpresas", empresas);  
-                parametros.put("SUBREPORT_DIR", "C:/Users/lprates/Desktop/jasperteste/projetoJasper/src/main/java/br/com/rdtecnologia/jasper/");        
+                parametros.put("SUBREPORT_DIR", "C:/Users/lprates/Desktop/jasperteste/projetoJasper2/src/main/java/br/com/rdtecnologia/jasper/");        
                 
                 
             
 		JasperReport report = JasperCompileManager.compileReport(this.getPathToReportPackage() + "Clientes.jrxml");
 		
-                JasperPrint print = JasperFillManager.fillReport(report, parametros, new JRBeanCollectionDataSource(clientes,false));
+                JasperPrint print = JasperFillManager.fillReport(report, parametros , new JRBeanCollectionDataSource(clientes,false) ) ;
                 
 		JasperExportManager.exportReportToPdfFile(print, "C:/Users/lprates/Desktop/jasperteste/Relatorio_de_Clientes.pdf");		
 	}

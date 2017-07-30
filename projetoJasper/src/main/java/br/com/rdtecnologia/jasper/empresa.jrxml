@@ -17,11 +17,17 @@
 	<detail>
 		<band height="36" splitType="Stretch">
 			<textField>
-				<reportElement x="80" y="0" width="100" height="30" uuid="a54d3e57-5241-4db7-94c0-af493a7b5d6d"/>
+				<reportElement x="80" y="0" width="100" height="20" uuid="a54d3e57-5241-4db7-94c0-af493a7b5d6d"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{empresaId}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="280" y="0" width="100" height="30" uuid="e21e03b7-66c7-4a18-ae40-726648005c64"/>
+				<reportElement x="280" y="0" width="100" height="20" uuid="e21e03b7-66c7-4a18-ae40-726648005c64"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{empresaNome}]]></textFieldExpression>
 			</textField>
 		</band>
